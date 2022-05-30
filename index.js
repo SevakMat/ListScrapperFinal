@@ -1,17 +1,16 @@
 import express from 'express';
-// const express = require('express');
-import { scrap } from './scrap/scrap.js'
-// const scrap = require('./scrap/scrap.js');
+import { parseScrapper } from "./Scrapper.js"
 
 const app = express();
-const port = 3000;
+// const bodyParser = require('body-parser');
 
-app.get('/getcars', async (req, res) => {
-  const data = await scrap()
-  console.log("success");
+
+
+app.get('/start-scrapping', async function (req, res) {
+  const data = await parseScrapper()
   res.send(data)
-});
+})
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`)
-});
+app.listen(3000, function () {
+  console.log("server runing 3000 port")
+})
