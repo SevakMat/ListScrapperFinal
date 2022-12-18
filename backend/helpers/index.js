@@ -39,7 +39,7 @@ export const listLoop = async (pageUrl, categoryNumber) => {
         pageCount++;
       }
     }
-    console.log(statements.length);
+    console.log(statements);
     return JSON.stringify(statements)
     // await sleep(PER_PAGE_DELAHY);
   }

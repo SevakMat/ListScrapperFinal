@@ -4,10 +4,10 @@ import { parseScrapper } from "./Scrapper.js"
 const app = express();
 // const bodyParser = require('body-parser');
 
+const data = await parseScrapper()
 
 
 app.get('/start-scrapping', async function (req, res) {
-  const data = await parseScrapper()
   res.send(data)
 })
 
