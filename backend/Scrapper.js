@@ -4,12 +4,10 @@ import { TEST_URL } from './constants/index.js'
 
 export async function parseScrapper(req, res) {
   return startScrapping(TEST_URL);
-
-  return 1
-
-
 };
 
+
+// "https://www.list.am/category/23?bid=7"
 const startScrapping = async (pageUrl) => {
   // add en for english
   if (!pageUrl.includes('en')) {
