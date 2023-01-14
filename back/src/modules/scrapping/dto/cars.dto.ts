@@ -7,5 +7,5 @@ export class CarsDTO {
 
   url: string;
 
-  carsUrlList: [carId: string]
+  carsUrlList:Array<string>
 }

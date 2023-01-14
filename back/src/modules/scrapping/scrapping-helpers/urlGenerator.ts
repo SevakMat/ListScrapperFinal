@@ -1,6 +1,6 @@
 import { AddCarDTO } from "../dto/addCar.dto";
 
-export const urlGenerator = (addCarDTO: AddCarDTO) => {
+export const urlGenerator = (addCarDTO: AddCarDTO["filterInfo"]) => {
   let url = 'https://www.list.am/en/category/23?n=0'
   console.log("addCarDTO", addCarDTO);
   const entriesArray = Object.entries(addCarDTO);

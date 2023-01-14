@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { CronService } from "./cron.service";
+// import { CronService } from "./cron.service";
 import { scrappingInfo, ScrappingSchema } from "./schemas/scrappingData.scema";
 import { ScrappingController } from "./scrapping.controller";
 import { ScrappingRepository } from "./scrapping.repository";
@@ -14,7 +14,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 
   ],
   controllers: [ScrappingController],
-  providers: [ScrappingService, ScrappingRepository, CronService],
+  providers: [ScrappingService, ScrappingRepository],
   exports: [ScrappingService]
 })
 

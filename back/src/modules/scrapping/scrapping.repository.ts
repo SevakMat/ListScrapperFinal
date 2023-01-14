@@ -16,17 +16,17 @@ export class ScrappingRepository {
 
   async addCarsList(addressDTO: CarsDTO): Promise<any> {
     const { userId, url, carsUrlList } = addressDTO;
-    console.log('userid', userId);
-
     const newCars = new this.scrappingModel({
       userId,
       url,
-      carsUrl: carsUrlList,
+      carsUrlList: carsUrlList,
     });
     return newCars.save();
   }
 
-  async updateCarList(userId: string, carsUrlList: Partial<any>): Promise<any> {
+  async updateCarList(addressDTO: CarsDTO): Promise<any> {
+    const { userId, carsUrlList } = addressDTO;
+
     return this.scrappingModel.updateOne(
       { userId: userId },
       { carsUrl: carsUrlList },
