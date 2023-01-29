@@ -20,7 +20,11 @@ export const PublicButton: React.FC<IButton> = (props) => {
         </Button>
     )
 }
-export const PublicLoadingButton: React.FC = () => {
+
+interface IPublicLoadingButton {
+    styles?: any
+}
+export const PublicLoadingButton: React.FC<IPublicLoadingButton> = ({ styles }) => {
 
     return (
         <LoadingButton
@@ -28,7 +32,7 @@ export const PublicLoadingButton: React.FC = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ ...styles }}
         >
             Loading
         </LoadingButton>

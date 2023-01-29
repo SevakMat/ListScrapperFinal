@@ -4,8 +4,10 @@ import { Box } from "@mui/system"
 import { Button } from '@mui/material';
 
 import BrandSelect from "./BrandSelect"
-import { SendCarData } from "../../services/scrapping.service";
-import { RootState, useAppSelector } from "../../store";
+import { AppDispatch, RootState, useAppSelector } from "../../store";
+import { SendCarDataEffect } from "../../globalEffects/SendCarDataEffect";
+import { useDispatch } from "react-redux";
+import { PublicButton, PublicLoadingButton } from "../../public/Button";
 
 export interface ISearchForm {
     cmtype?: string; //anhatakan kam diler
@@ -38,27 +40,34 @@ export interface ISearchForm {
 
 const Dashboard = () => {
     const { user } = useAppSelector((state: RootState) => state.auth)
-
+    const dispatch: AppDispatch = useDispatch()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [searchForm, setSearchForm] = useState<ISearchForm>({
         bid: "",
         mid: ""
     })
 
     const confirmSearch = () => {
-        console.log(user);
-
-        SendCarData(searchForm, user?.userId as string)
+        dispatch(SendCarDataEffect(searchForm, user?.userId as string, setIsLoading))
     }
 
     return (
         <Box>
             <BrandSelect setSearchForm={setSearchForm} />
-            <Button
-                variant="contained"
-                onClick={confirmSearch}
-            >
-                Confirm search
-            </Button>
+
+            {
+                isLoading
+                    ?
+                    <PublicLoadingButton styles={{ width: "165px" }} />
+                    :
+                    <Button
+                        variant="contained"
+                        onClick={confirmSearch}
+                    >
+                        Confirm search
+                    </Button>
+            }
+
         </Box>
     )
 }

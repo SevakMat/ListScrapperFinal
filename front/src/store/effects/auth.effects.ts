@@ -26,8 +26,6 @@ export const loginEffect = (
         data: { access_token, user },
       } = result;
 
-      console.log(access_token, user);
-
       await localStorage.setItem("accessToken", access_token);
       dispatch(loginRequestSuccess(user));
 

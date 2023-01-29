@@ -44,8 +44,8 @@ const Login = () => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         dispatch(loginEffect({ email: data.get('email') as string, password: data.get('password') as string }, navigate))
-
     };
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -93,7 +93,6 @@ const Login = () => {
                         {
                             authLoading ? <PublicLoadingButton /> : <PublicButton text={"Sign in"} />
                         }
-
 
                         <Grid container>
                             <Grid item xs>
